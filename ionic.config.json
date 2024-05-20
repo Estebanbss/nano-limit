@@ -1,0 +1,7 @@
+{
+  "name": "NanoLimit",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

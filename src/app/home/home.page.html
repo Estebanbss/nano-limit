@@ -1,0 +1,89 @@
+<ion-content color="light" [fullscreen]="true">
+<app-title></app-title>
+
+<div id=totalPortfolio class="flex flex-col bg-white min-h-[100px] rounded-b-[2em] px-10 py-2  gap-0 mb-10">
+  <span class="font-Mukta text-xl font-[800] margin-b-0">Total portafolio</span>
+  @if(totalPortfolio() !== null){
+    <h3 class="font-Mukta text-[3em] leading-10 font-extrabold mb-10"><strong>{{formatCurrency(totalPortfolio()!)}}</strong></h3>
+  }@else{
+    <h3 class="font-Mukta text-[3em] leading-10 font-extrabold mb-10  min-h-[40px] ">
+      <strong>
+        <ion-skeleton-text [animated]="true" style="width: 80%; height: 40px;"></ion-skeleton-text>
+      </strong>
+    </h3>
+  }
+</div>
+
+<div id=botsList class="flex flex-col bg-white min-h-[100px]  rounded-[2em]  py-5 pb-12 gap-0 mb-10 relative transition-all duration-500 ease-in-out">
+  <h3 class="font-Mukta text-3xl leading-10 font-extrabold my-5 px-10"><strong>Bots</strong></h3>
+    @if(Bots() !== null && Bots()!.length > 0){
+      <div class="flex flex-col px-2 gap-2 ">
+
+        @for(bot of Bots()!.slice(0,botsToShow); track bot.id){
+
+          <div class="flex flex-row w-full flex-1 p-2 border-[3px] text-sm rounded-xl border-[#59c2702d]">
+            <span class="w-full text-center py-2 font-black font-Mukta">{{bot.name}}</span>
+            <span class="w-full text-center py-2 font-bold font-sans text-[#2f793f]">{{formatCurrency(bot.value!)}}</span>
+            <span class="w-full text-center py-2 font-Mukta font-extrabold text-[#59C270]">{{bot.state}}</span>
+          </div>
+        }
+
+      </div>
+    }@else{
+      <div class="flex flex-col px-4 gap-2">
+      <ion-skeleton-text [animated]="true" style="width: 100%; height: 50px; margin:0px,4px,0px,4px"></ion-skeleton-text>
+      <ion-skeleton-text [animated]="true" style="width: 100%; height: 50px; margin:0px,4px,0px,4px"></ion-skeleton-text>
+      <ion-skeleton-text [animated]="true" style="width: 100%; height: 50px; margin:0px,4px,0px,4px"></ion-skeleton-text>
+      </div>
+    }
+
+    @if(Bots() !== null && Bots()!.length > 2){
+      <div class="absolute bottom-0 left-1/2 -translate-x-1/2">
+          <button (click)="expandedBots()" class="p-2 flex flex-row justify-center items-center gap-2 font-black font-Mukta">
+            @if(botsToShow < Bots()!.length){
+              See more
+            }@else{
+              See less
+            }
+            <svg   [ngClass]="{ 'rotate-180': botsToShow === Bots()!.length }" class="transition-transform duration-500" width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M0.909096 6.63682L4.36591 9.82402C4.57804 10.0196 4.92196 10.0196 5.13409 9.82402L8.59091 6.63682C8.80303 6.44124 8.80303 6.12414 8.59091 5.92856C8.37878 5.73298 8.03485 5.73298 7.82272 5.92856L5.29319 8.2608L5.29319 0.970703L4.20681 0.970703V8.2608L1.67728 5.92856C1.46515 5.73298 1.12122 5.73298 0.909096 5.92856C0.696968 6.12414 0.696968 6.44124 0.909096 6.63682Z" fill="black" stroke="black"/>
+              </svg>
+
+          </button>
+      </div>
+    }
+</div>
+
+<div id=stats class="flex flex-col bg-white min-h-[100px]  rounded-[2em]  py-5 pb-10 gap-0 mb-5 relative transition-all duration-500 ease-in-out">
+  <h3 class="font-Mukta text-3xl leading-10 font-extrabold my-5 px-10"><strong>Stats</strong></h3>
+    @if(Stats() !== null && Stats() !== undefined){
+      <div class="flex flex-col px-2 gap-2 ">
+        <div class="flex flex-row px-10">
+          <span class="w-full text-left font-black font-Eloquia"><strong>Today</strong></span>
+          <span class="w-full text-right  font-bold font-sans text-[#2f793f]">{{formatCurrency(Stats()!.today!)}}</span>
+        </div>
+        <div class="flex flex-row px-10">
+          <span class="w-full text-left  font-black font-Eloquia"><strong>Last 7D</strong></span>
+          <span class="w-full text-right  font-bold font-sans text-[#2f793f]">{{formatCurrency(Stats()!.last7Days!)}}</span>
+        </div>
+        <div class="flex flex-row px-10">
+          <span class="w-full text-left  font-black font-Eloquia"><strong>Last 3D</strong></span>
+          <span class="w-full text-right  font-bold font-sans text-[#2f793f]">{{formatCurrency(Stats()!.last30Days!)}}</span>
+        </div>
+        <div class="flex flex-row">
+        </div>
+      </div>
+    }@else{
+      <div class="flex flex-col px-4 gap-2">
+      <ion-skeleton-text [animated]="true" style="width: 100%; height: 50px; margin:0px,4px,0px,4px"></ion-skeleton-text>
+      <ion-skeleton-text [animated]="true" style="width: 100%; height: 50px; margin:0px,4px,0px,4px"></ion-skeleton-text>
+      <ion-skeleton-text [animated]="true" style="width: 100%; height: 50px; margin:0px,4px,0px,4px"></ion-skeleton-text>
+      </div>
+    }
+
+</div>
+
+
+
+</ion-content>
+

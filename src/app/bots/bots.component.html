@@ -1,0 +1,27 @@
+<ion-content color="light" [fullscreen]="true">
+  <app-title></app-title>
+  <div id=botsList class="flex flex-col bg-white min-h-[100px]  rounded-b-[2em]  py-5 pb-12 gap-0 mb-10 relative transition-all duration-500 ease-in-out">
+    <h3 class="font-Mukta text-3xl leading-10 font-extrabold my-5 px-10"><strong>Bots</strong></h3>
+      @if(Bots() !== null && Bots()!.length > 0){
+        <div class="flex flex-col px-2 gap-2 ">
+
+          @for(bot of Bots(); track bot.id){
+
+            <div class="flex flex-row w-full flex-1 p-2 border-[3px] text-sm rounded-xl border-[#59c2702d]">
+              <span class="w-full text-center py-2 font-black font-Mukta">{{bot.name}}</span>
+              <span class="w-full text-center py-2 font-bold font-sans text-[#2f793f]">{{formatCurrency(bot.value!)}}</span>
+              <span class="w-full text-center py-2 font-Mukta font-extrabold text-[#59C270]">{{bot.state}}</span>
+            </div>
+          }
+
+        </div>
+      }@else{
+        <div class="flex flex-col px-4 gap-2">
+        <ion-skeleton-text [animated]="true" style="width: 100%; height: 50px; margin:0px,4px,0px,4px"></ion-skeleton-text>
+        <ion-skeleton-text [animated]="true" style="width: 100%; height: 50px; margin:0px,4px,0px,4px"></ion-skeleton-text>
+        <ion-skeleton-text [animated]="true" style="width: 100%; height: 50px; margin:0px,4px,0px,4px"></ion-skeleton-text>
+        </div>
+      }
+  </div>
+</ion-content>
+

@@ -1,0 +1,28 @@
+<ion-tabs #tabs (ionTabsDidChange)="setCurrentTab()">
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="home">
+      <ion-icon [style.color]="selectedTab() === 'home'? '#59C270' : 'black'" src="assets/icon/home.svg"></ion-icon>
+      <svg [ngClass]="{'text-transparent': selectedTab() !== 'home'}"  class="mt-[3px]" width="35%" height="5" xmlns="http://www.w3.org/2000/svg">
+        <line x1="0" y1="1" x2="100%" y2="1" stroke="currentColor" stroke-width="5" />
+      </svg>
+    </ion-tab-button>
+    <ion-tab-button tab="bots">
+      <ion-icon [style.color]="selectedTab() === 'bots'? '#59C270' : 'black'" src="assets/icon/bots.svg"></ion-icon>
+      <svg [ngClass]="{'text-transparent': selectedTab() !== 'bots'}"  class="mt-[3px]" width="35%" height="5" xmlns="http://www.w3.org/2000/svg">
+        <line x1="0" y1="1" x2="100%" y2="1" stroke="currentColor" stroke-width="5" />
+      </svg>
+    </ion-tab-button>
+    <ion-tab-button tab="current">
+      <ion-icon [style.color]="selectedTab() === 'current'? '#59C270' : 'black'" src="assets/icon/current.svg"></ion-icon>
+      <svg [ngClass]="{'text-transparent': selectedTab() !== 'current'}"  class="mt-[3px]" width="35%" height="5" xmlns="http://www.w3.org/2000/svg">
+        <line x1="0" y1="1" x2="100%" y2="1" stroke="currentColor" stroke-width="5" />
+      </svg>
+    </ion-tab-button>
+    <ion-tab-button tab="operations">
+      <ion-icon [style.color]="selectedTab() === 'operations'? '#59C270' : 'black'" src="assets/icon/operations.svg"></ion-icon>
+      <svg [ngClass]="{'text-transparent': selectedTab() !== 'operations'}"  class="mt-[3px]" width="35%" height="5" xmlns="http://www.w3.org/2000/svg">
+        <line x1="0" y1="1" x2="100%" y2="1" stroke="currentColor" stroke-width="5" />
+      </svg>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>
